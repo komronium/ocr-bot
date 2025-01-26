@@ -1,6 +1,7 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher
+from aiogram.client.default import DefaultBotProperties
 
 from config import settings
 from app.handlers import common, ocr, subscription
@@ -12,7 +13,7 @@ from app.middlewares.channel_subscription import ChannelSubscriptionMiddleware
 async def main():
     logging.basicConfig(level=logging.INFO)
 
-    bot = Bot(token=settings.BOT_TOKEN, parse_mode='Markdown')
+    bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode='Markdown'))
     dp = Dispatcher()
 
     dp.message.middleware(ThrottlingMiddleware())
