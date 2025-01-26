@@ -12,7 +12,7 @@ from app.middlewares.channel_subscription import ChannelSubscriptionMiddleware
 async def main():
     logging.basicConfig(level=logging.INFO)
 
-    bot = Bot(token=settings.BOT_TOKEN)
+    bot = Bot(token=settings.BOT_TOKEN, parse_mode='Markdown')
     dp = Dispatcher()
 
     dp.message.middleware(ThrottlingMiddleware())
