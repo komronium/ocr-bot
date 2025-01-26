@@ -3,9 +3,10 @@ import logging
 from aiogram import Bot, Dispatcher
 
 from config import settings
-from app.handlers import common, ocr
+from app.handlers import common, ocr, subscription
 from app.utils.set_commands import set_default_commands
 from app.middlewares.throttling import ThrottlingMiddleware
+from app.middlewares.channel_subscription import ChannelSubscriptionMiddleware
 
 
 async def main():
@@ -15,8 +16,10 @@ async def main():
     dp = Dispatcher()
 
     dp.message.middleware(ThrottlingMiddleware())
+    dp.message.middleware(ChannelSubscriptionMiddleware())
     dp.include_router(common.router)
     dp.include_router(ocr.router)
+    dp.include_router(subscription.router)
 
     await set_default_commands(bot)
     await dp.start_polling(bot)
