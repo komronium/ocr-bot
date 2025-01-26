@@ -32,7 +32,7 @@ class ChannelSubscriptionMiddleware(BaseMiddleware):
                 )
                 session.add(new_user)
                 session.commit()
-
+                
                 # Notify group about new user
                 from app.utils.notify_group import notify_group_about_new_user
                 await notify_group_about_new_user(user.bot, user)
