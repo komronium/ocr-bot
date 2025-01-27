@@ -1,5 +1,6 @@
 from aiogram import types, Router, F
 from app.services.ocr_service import extract_text_from_image
+from app.services.user_service import UserService
 
 router = Router()
 
@@ -17,6 +18,7 @@ async def handle_image(message: types.Message):
         text = await extract_text_from_image(downloaded_file)
 
         if text:
+            await UserService().add_conversion(message.from_user.id)
             await processing_msg.edit_text(f"*Extracted text:*\n\n{text}", parse_mode='Markdown')
         else:
             await processing_msg.edit_text("No text was found in the image.")
