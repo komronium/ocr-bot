@@ -1,13 +1,11 @@
 from datetime import date
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import text, func
-from config import settings
-from app.models.user import User, engine
+    from app.models.user import User, engine
 
 
 class UserService:
     def __init__(self):
-        self.channel_usernmae = settings.CHANNEL_USERNAME
         self.Session = sessionmaker(bind=engine)
 
     async def get_users(self):
