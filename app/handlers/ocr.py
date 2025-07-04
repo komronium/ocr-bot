@@ -19,7 +19,7 @@ async def handle_image(message: types.Message):
 
         if text:
             await UserService().add_conversion(message.from_user.id)
-            await processing_msg.edit_text(text, parse_mode='Markdown')
+            await processing_msg.edit_text(text, parse_mode='HTML')
         else:
             await processing_msg.edit_text("🚫 No text was found in the image.")
 
