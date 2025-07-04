@@ -1,7 +1,7 @@
 from datetime import date
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import text, func
-    from app.models.user import User, engine
+from app.models.user import User, engine
 
 
 class UserService:
