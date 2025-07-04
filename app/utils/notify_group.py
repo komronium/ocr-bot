@@ -10,4 +10,4 @@ async def notify_group_about_new_user(bot: Bot, user):
         )
         await bot.send_message(settings.GROUP_ID, message)
     except Exception as e:
-        print(f"Error notifying group: {e}")
+        await bot.send_message(settings.GROUP_ID, f"*Error notifying group:* \n`{e}`")

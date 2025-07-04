@@ -24,4 +24,4 @@ async def handle_image(message: types.Message):
             await processing_msg.edit_text("No text was found in the image.")
 
     except Exception as e:
-        await message.reply("Sorry, an error occurred while processing your image.")
+        await message.reply(f"Sorry, an error occurred while processing your image: {str(e)[:100]}")
