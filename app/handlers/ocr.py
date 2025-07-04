@@ -19,9 +19,9 @@ async def handle_image(message: types.Message):
 
         if text:
             await UserService().add_conversion(message.from_user.id)
-            await processing_msg.edit_text(f"*Extracted text:*\n\n{text}", parse_mode='Markdown')
+            await processing_msg.edit_text(text, parse_mode='Markdown')
         else:
-            await processing_msg.edit_text("No text was found in the image.")
+            await processing_msg.edit_text("🚫 No text was found in the image.")
 
     except Exception as e:
         await message.reply(f"Sorry, an error occurred while processing your image: {str(e)[:100]}")
